@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PortfolioQuickGlance</string>
+    <string name="action_settings">Settings</string>
+    <string name="submit">Submit</string>
+    <string name="entryRemoved">Entry removed</string>
+    <string name="undo">Undo</string>
+</resources>

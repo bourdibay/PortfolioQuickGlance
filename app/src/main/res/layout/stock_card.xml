@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardElevation="0dp"
+            android:layout_margin="-10dp">
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textSize="13sp"
+                    android:textStyle="bold" android:textColor="@android:color/black"/>
+            <TextView
+                    android:text="PRICE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/price"
+                    android:layout_below="@id/name"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
+            <TextView
+                    android:text="CURRENCY"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/currency"
+                    android:layout_below="@id/name"
+                    android:layout_toEndOf="@id/price"
+                    android:paddingStart="5dp"/>
+            <TextView
+                    android:text="VARIATION"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/variation"
+                    android:layout_below="@id/price"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="ISIN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/isin"
+                    android:layout_below="@id/variation"
+                    android:textSize="10sp"/>
+
+            <TableLayout android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentEnd="true"
+                         android:layout_alignParentTop="true">
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Opening"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:paddingRight="5dp"/>
+                    <TextView
+                            android:text="OPENING"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/opening"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textAlignment="viewEnd"/>
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Prev closing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:paddingRight="5dp"/>
+                    <TextView
+                            android:text="PREV_CLOSING"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/prevClosing"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textAlignment="viewEnd"/>
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Highest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:paddingRight="5dp"/>
+                    <TextView
+                            android:text="HIGHER"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/highest"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textAlignment="viewEnd"/>
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="Lowest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:paddingRight="5dp"/>
+                    <TextView
+                            android:text="LOWER"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lowest"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textAlignment="viewEnd"/>
+                </TableRow>
+            </TableLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
