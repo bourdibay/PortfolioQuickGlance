@@ -35,14 +35,14 @@ class BoursoramaScraperTest {
 
     @Test
     fun retrieveCAC40StockFromWebsite() {
-        val scraper = BoursoramaScraper.fromStock("gle")
+        val scraper = BoursoramaScraper.fromISIN("FR0000120271")
         scraper.load()
-        Assert.assertEquals("https://www.boursorama.com/cours/1rPGLE/", scraper.getRedirectedLink())
+        Assert.assertEquals("https://www.boursorama.com/cours/1rPFP/", scraper.getRedirectedLink())
     }
 
     @Test
     fun wrongStockEntered() {
-        val scraper = BoursoramaScraper.fromStock("hellllllo")
+        val scraper = BoursoramaScraper.fromISIN("hellllllo")
         scraper.load()
         Assert.assertFalse(scraper.isValid())
     }

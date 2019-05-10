@@ -5,10 +5,10 @@ import java.io.IOException
 import java.io.InputStream
 
 data class Quotation(val name: String) {
-    lateinit var opening: String
-    lateinit var prevClosing: String
-    lateinit var highest: String
-    lateinit var lowest: String
+    var opening: String = ""
+    var prevClosing: String = ""
+    var highest: String = ""
+    var lowest: String = ""
 }
 
 data class StockData(val name: String) {
@@ -29,8 +29,8 @@ class BoursoramaScraper private constructor(private val url: String) {
             return scraper
         }
 
-        fun fromStock(stock: String): BoursoramaScraper {
-            return BoursoramaScraper("https://www.boursorama.com/cours/$stock")
+        fun fromISIN(isin: String): BoursoramaScraper {
+            return BoursoramaScraper("https://www.boursorama.com/recherche/$isin")
         }
 
         fun fromUrl(url: String): BoursoramaScraper {
@@ -46,7 +46,6 @@ class BoursoramaScraper private constructor(private val url: String) {
         try {
             htmlDocument = Jsoup.connect(url).get()
         } catch (e: IOException) {
-            e.toString()
         }
         stockData = fillStockData()
     }
@@ -66,6 +65,9 @@ class BoursoramaScraper private constructor(private val url: String) {
             return null
 
         val divCompanyBody = htmlDocument!!.select("div.c-faceplate__body")
+
+        if (divCompanyBody.isEmpty())
+            return null
 
         // name
         val divCompanyFaceplate = divCompanyBody.select("div.c-faceplate__company")
@@ -88,7 +90,7 @@ class BoursoramaScraper private constructor(private val url: String) {
         val divQuotations = divDataFaceplate.select("div.c-faceplate__quotation.c-faceplate__quotation--margin-bottom")
 
         if (divQuotations.isEmpty())
-            return null
+            return stock
 
         val firstQuotationDiv = divQuotations[0]
         stock.quotation.opening = firstQuotationDiv.select("span.c-instrument.c-instrument--open").text()

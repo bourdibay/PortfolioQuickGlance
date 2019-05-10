@@ -66,10 +66,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupFloatingActionButton() {
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             MaterialDialog(this).show {
-                input(hint = "EPA code", allowEmpty = false) { _, text ->
+                input(hint = "ISIN", allowEmpty = false) { _, text ->
                     val nbUrls = viewAdapter.scrapers.size()
 
-                    BoursoramaScraperTaskFromStock(viewAdapter) {
+                    BoursoramaScraperTaskFromISIN(viewAdapter) {
                         val newNbUrls = viewAdapter.scrapers.size()
                         if (nbUrls != newNbUrls) {
                             saveBoursoramaUrls()

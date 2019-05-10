@@ -3,11 +3,11 @@ package com.bourdi_bay.portfolioquickglance
 import android.os.AsyncTask
 import android.widget.Toast
 
-class BoursoramaScraperTaskFromStock(private val viewAdapter: MyAdapter, private val onPostExecute: () -> Any?) :
+class BoursoramaScraperTaskFromISIN(private val viewAdapter: MyAdapter, private val onPostExecute: () -> Any?) :
     AsyncTask<String, Void, BoursoramaScraper>() {
 
     override fun doInBackground(vararg params: String): BoursoramaScraper {
-        val scraper = BoursoramaScraper.fromStock(params[0])
+        val scraper = BoursoramaScraper.fromISIN(params[0])
         scraper.load()
         return scraper
     }
@@ -15,7 +15,7 @@ class BoursoramaScraperTaskFromStock(private val viewAdapter: MyAdapter, private
     override fun onPostExecute(scraper: BoursoramaScraper) {
 
         if (scraper.isLoaded() && !scraper.isValid()) {
-            Toast.makeText(viewAdapter.context, "Invalid EPA code", Toast.LENGTH_SHORT).show()
+            Toast.makeText(viewAdapter.context, "Invalid ISIN code", Toast.LENGTH_SHORT).show()
         } else {
             synchronized(viewAdapter.scrapers) {
                 viewAdapter.scrapers.add(scraper)
